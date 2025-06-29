@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -74,5 +78,3 @@
 .text-white {
   color: #fff;
 }
-
-/* More utility classes as needed */
