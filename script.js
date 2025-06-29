@@ -99,18 +99,23 @@ function showError(message) {
   }
 }
 
+// Event Listeners
+searchBtn.addEventListener('click', handleSearch);
+searchInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    handleSearch();
+  }
+});
+
 // Initial Load
 window.addEventListener('DOMContentLoaded', async () => {
   showLoading(true);
   try {
-    const data = await mockFetchIpData('8.8.8.8'); // simulate public IP lookup
+    const data = await mockFetchIpData('8.8.8.8'); // Default IP to show on load
     updateUI(data);
+  } catch (err) {
+    showError('Failed to load initial data.');
   } finally {
     showLoading(false);
   }
-});
-
-searchBtn.addEventListener('click', handleSearch);
-searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') handleSearch();
 });
